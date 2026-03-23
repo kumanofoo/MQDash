@@ -2,3 +2,4 @@
 .vscode
 tmp/
 platformio.ini.bak
+scratch/

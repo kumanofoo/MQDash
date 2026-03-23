@@ -332,12 +332,24 @@ void setup() {
 // loop()
 // --------------------------------------------------
 void loop() {
+  static const uint16_t INTERVAL_MS = 10;
+  static const uint16_t SECONDS_COUNT = 1000/INTERVAL_MS;
+  static int16_t second_timer = SECONDS_COUNT;
+  
+  M5.update();
+
   if (!MQTTClient.connected()) {
     mqttReconnect();
   }
   MQTTClient.loop();
   Dashboard.loop();
-  M5.update();
   rtcUpdate();
-  delay(10);
+  
+  second_timer -= 1;
+  if (second_timer == 0) {
+    second_timer = SECONDS_COUNT;
+    Dashboard.updateTime();
+  }
+
+  delay(INTERVAL_MS);
 }

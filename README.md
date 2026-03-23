@@ -84,6 +84,26 @@ The device subscribes to two MQTT topics configured during setup: a temperature 
 - PubSubClient: MQTT client library for Arduino
 - ArduinoJson: JSON parsing library
 
+## Build and Install the project
+
+Build MQDash code
+
+```console
+pio run
+```
+
+Upload to M5StickC Plus2
+
+```console
+pio run -t upload
+```
+
+Monitor serial output on a terminal
+
+```console
+pio device monitor
+```
+
 ## License
 
 This project is licensed under the MIT License.
